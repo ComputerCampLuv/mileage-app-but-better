@@ -1,0 +1,8 @@
+class CreateFullFills < ActiveRecord::Migration[5.2]
+  def change
+    create_table :full_fills do |t|
+
+      t.timestamps
+    end
+  end
+end

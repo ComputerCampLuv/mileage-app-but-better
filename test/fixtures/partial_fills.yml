@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_fill: one
+  price_per_litre: 9.99
+  total_price: 9.99
+  miles_complete: 9.99
+
+two:
+  full_fill: two
+  price_per_litre: 9.99
+  total_price: 9.99
+  miles_complete: 9.99

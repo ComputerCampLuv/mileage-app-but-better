@@ -1,0 +1,18 @@
+= form_with model: @partial_fill do |f| 
+  
+  = f.label :car_id
+  = f.collection_select :car_id, Car.all, :id, :name, { prompt: true }, class: "form-control form-control-lg"
+
+  = f.label :price_per_litre
+  = f.number_field :price_per_litre, step: 0.1, class: "form-control form-control-lg"
+
+  = f.label :total_price
+  = f.number_field :total_price, step: 0.01, class: "form-control form-control-lg"
+
+  = f.label :miles_complete
+  = f.number_field :miles_complete, step: 0.1, class: "form-control form-control-lg"
+
+  = f.label :fully_filled
+  = f.check_box :fully_filled
+
+  = f.submit :submit, class: "btn btn-lg btn-block btn-primary mt-4"
