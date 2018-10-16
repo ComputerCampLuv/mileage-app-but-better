@@ -1,10 +1,10 @@
 = link_to 'fill up', new_partial_fill_path, class: "btn btn-lg btn-block btn-secondary"
 
 - @cars.each do |car| 
-  %h1.display-1.mt-4.text-center= car.name
+  %h4.display-4.mt-4.text-center= car.name
   .card.bg-light
     .card-body
-      %h4.display-4.text-center.mb-4= car.to_s
+      %p.text-center.mb-4= car.to_s
       - car.full_fills.each do |ff| 
         -if ff.complete
           %p.text-center
