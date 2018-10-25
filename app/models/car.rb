@@ -7,15 +7,21 @@ class Car < ApplicationRecord
     gallons = 0
     miles = 0
     price = 0
+    any_completed_fills = false
 
     self.full_fills.each do |ff| 
       if ff.complete
+        any_completed_fills = true
         gallons += ff.totals[:gallons]
         miles += ff.totals[:miles]
         price += ff.totals[:price]
       end
     end
 
-    "MPG : #{sprintf('%.1f', miles / gallons)}  |  PPM : #{sprintf('%.1f', price * 100 / miles)}"
+    if any_completed_fills
+      "MPG : #{sprintf('%.1f', miles / gallons)}  |  PPM : #{sprintf('%.1f', price * 100 / miles)}"
+    else
+      "No fill-ups yet completed for this vehicle"
+    end
   end
 end

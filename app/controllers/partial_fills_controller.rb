@@ -12,12 +12,15 @@ class PartialFillsController < ApplicationController
     @partial_fill = PartialFill.new(partial_fill_params)
     @complete = @partial_fill[:fully_filled]
     @car = Car.find(params[:partial_fill][:car_id])
+    @full_fill = @car.full_fills.last
 
-    if @car.full_fills.last.complete
+    if !@full_fill
+      @partial_fill.full_fill = FullFill.create(complete: @complete, car: @car)
+    elsif @full_fill.complete
       @partial_fill.full_fill = FullFill.create(complete: @complete, car: @car)
     else
-      @partial_fill.full_fill = @car.full_fills.last
-      @car.full_fills.last.update(complete: @complete, car: @car)
+      @partial_fill.full_fill = @full_fill
+      @full_fill.update(complete: @complete, car: @car)
     end
 
     if @partial_fill.fully_filled
