@@ -26,7 +26,7 @@ class PartialFillsController < ApplicationController
 
     if @partial_fill.save
       flash[:notice] = "Saved!"
-      redirect_to root_path
+      redirect_to partial_fills_path
     else
       flash[:alert] = "Nope!"
       render 'new'
