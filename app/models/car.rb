@@ -19,7 +19,11 @@ class Car < ApplicationRecord
     end
 
     if any_completed_fills
-      "MPG : #{sprintf('%.1f', miles / gallons)}  |  PPM : #{sprintf('%.1f', price * 100 / miles)}"
+      begin
+        "MPG : #{sprintf('%.1f', miles / gallons)}  |  PPM : #{sprintf('%.1f', price * 100 / miles)}"
+      rescue ZeroDivisionError
+        'ZeroDivisionError'
+      end
     else
       "No fill-ups yet completed for this vehicle"
     end

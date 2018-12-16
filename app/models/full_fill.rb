@@ -35,7 +35,11 @@ class FullFill < ApplicationRecord
   end
 
   def ppm
-    @price * 100 / @miles
+    begin
+      @price * 100 / @miles
+    rescue ZeroDivisionError
+      1
+    end
   end
 
   def gallons
